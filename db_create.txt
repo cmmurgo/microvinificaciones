@@ -33,4 +33,5 @@ CREATE TABLE muestra (
         FOREIGN KEY (vinedo_id)
         REFERENCES vinedo(id)
         ON DELETE CASCADE
-);
+);php create_db.php
+php yii migrate
