@@ -1,0 +1,36 @@
+php create_db.php
+php yii migrate
+
+sino se puede migrar:
+CREATE TABLE vinedo (
+    id SERIAL PRIMARY KEY,
+    sistema_conduccion VARCHAR(255),
+    estado_sanitario VARCHAR(255),
+    tipo_suelo VARCHAR(255),
+    tipo_riego VARCHAR(255),
+    provincia VARCHAR(255),
+    localidad VARCHAR(255),
+    latitud NUMERIC(10,8),
+    longitud NUMERIC(11,8),
+    observaciones TEXT,
+    created_at INTEGER,
+    updated_at INTEGER
+);
+
+CREATE TABLE muestra (
+    id SERIAL PRIMARY KEY,
+    vinedo_id INTEGER NOT NULL,
+    variedad_uva VARCHAR(255),
+    grados_brix NUMERIC(5,2),
+    temperatura NUMERIC(5,2),
+    ph NUMERIC(4,2),
+    fecha_hora_muestreo TIMESTAMP,
+    peso_muestra NUMERIC(10,2),
+    observaciones TEXT,
+    created_at INTEGER,
+    updated_at INTEGER,
+    CONSTRAINT fk_muestra_vinedo
+        FOREIGN KEY (vinedo_id)
+        REFERENCES vinedo(id)
+        ON DELETE CASCADE
+);

@@ -1,0 +1,13 @@
+﻿main > .container { padding: 70px 15px 20px; }
+:root { --primary-color: #6200ee; --primary-variant: #3700b3; --secondary-color: #03dac6; --background-color: #f5f5f5; --surface-color: #ffffff; --error-color: #b00020; }
+body { background-color: var(--background-color); font-family: 'Roboto', sans-serif; }
+.navbar { background-color: var(--primary-color) !important; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.navbar-brand, .nav-link { color: #ffffff !important; }
+.card { border: none; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 16px; background-color: var(--surface-color); }
+.card-title { color: var(--primary-color); font-weight: 500; }
+.btn-primary { background-color: var(--primary-color); border-color: var(--primary-color); border-radius: 4px; text-transform: uppercase; font-weight: 500; letter-spacing: 0.5px; padding: 8px 16px; }
+.btn-primary:hover { background-color: var(--primary-variant); border-color: var(--primary-variant); }
+.fab { position: fixed; bottom: 20px; right: 20px; width: 140px; height: 56px; border-radius: 28px; background-color: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 10px rgba(0,0,0,0.14); z-index: 1000; text-decoration: none; font-weight: bold; }
+.fab:hover { background-color: var(--primary-variant); color: white; }
+.fab-vinedo { bottom: 80px; }
+.fab-muestra { bottom: 20px; }
