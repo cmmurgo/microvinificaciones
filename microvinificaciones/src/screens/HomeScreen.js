@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
       // 2. Sync Samples
       const allVinedos = getAllVinedos(); // Get updated list with remote_ids
       const unsyncedMuestras = getUnsyncedMuestras();
-      
+
       for (const m of unsyncedMuestras) {
         const localVinedo = allVinedos.find(v => v.id === m.vinedo_id);
         if (localVinedo && localVinedo.synced) {
@@ -63,11 +63,13 @@ const HomeScreen = ({ navigation }) => {
         data={vinedos}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
-          <Card style={styles.card}>
+          <Card
+            style={styles.card}
+            onPress={() => navigation.navigate('VineyardDetail', { vineyardId: item.id })}
+          >
+            <Card.Title title={item.localidad} subtitle={item.sistema_conduccion} />
             <Card.Content>
-              <Title>{item.localidad}</Title>
-              <Text>Sistema: {item.sistema_conduccion}</Text>
-              <Text>Sincronizado: {item.synced ? 'Sí' : 'No'}</Text>
+              <Text>{item.observaciones}</Text>
             </Card.Content>
           </Card>
         )}

@@ -85,5 +85,51 @@ export const markMuestraSynced = (id, remote_id) => {
 };
 
 export const getAllVinedos = () => {
-  return db.getAllSync('SELECT * FROM vinedo');
+  return db.getAllSync('SELECT * FROM vinedo ORDER BY id DESC');
+};
+
+export const getVinedoById = (id) => {
+  return db.getFirstSync('SELECT * FROM vinedo WHERE id = ?', [id]);
+};
+
+export const updateVinedo = (id, vinedo) => {
+  return db.runSync(
+    `UPDATE vinedo SET sistema_conduccion = ?, estado_sanitario = ?, tipo_suelo = ?, tipo_riego = ?, provincia = ?, localidad = ?, latitud = ?, longitud = ?, observaciones = ?, synced = 0 WHERE id = ?`,
+    [
+      vinedo.sistema_conduccion,
+      vinedo.estado_sanitario,
+      vinedo.tipo_suelo,
+      vinedo.tipo_riego,
+      vinedo.provincia,
+      vinedo.localidad,
+      vinedo.latitud,
+      vinedo.longitud,
+      vinedo.observaciones,
+      id
+    ]
+  );
+};
+
+export const getMuestrasByVinedoId = (vinedoId) => {
+  return db.getAllSync('SELECT * FROM muestra WHERE vinedo_id = ? ORDER BY fecha_hora_muestreo DESC', [vinedoId]);
+};
+
+export const getMuestraById = (id) => {
+  return db.getFirstSync('SELECT * FROM muestra WHERE id = ?', [id]);
+};
+
+export const updateMuestra = (id, muestra) => {
+  return db.runSync(
+    `UPDATE muestra SET vinedo_id = ?, variedad_uva = ?, grados_brix = ?, temperatura = ?, ph = ?, peso_muestra = ?, observaciones = ?, synced = 0 WHERE id = ?`,
+    [
+      muestra.vinedo_id,
+      muestra.variedad_uva,
+      muestra.grados_brix,
+      muestra.temperatura,
+      muestra.ph,
+      muestra.peso_muestra,
+      muestra.observaciones,
+      id
+    ]
+  );
 };
