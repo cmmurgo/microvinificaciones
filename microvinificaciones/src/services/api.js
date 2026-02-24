@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // Replace with your local IP if testing on a physical device
-const API_BASE_URL = 'http://192.168.100.19:8080'; 
+//const API_BASE_URL = 'http://192.168.100.19:8080'; 
+//const API_BASE_URL = 'http://159.112.141.134/microvinificaciones/web';
+const API_BASE_URL = 'https://appmdz.duckdns.org';
 export const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
